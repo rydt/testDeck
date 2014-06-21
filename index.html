@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test deck</title>
+  <title>Titanic disaster</title>
   <meta charset="utf-8">
-  <meta name="description" content="Test deck">
-  <meta name="author" content="">
+  <meta name="description" content="Titanic disaster">
+  <meta name="author" content="rydt">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Test deck</h1>
-    <h2></h2>
-    <p><br/></p>
+    <h1>Titanic disaster</h1>
+    <h2>Decision tree application</h2>
+    <p>rydt<br/>data scientist</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,14 +43,21 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>My application</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <p>This application allows to perform predictions on the survival of a person in the Titanic. The problem is taken from the kaggle competition in the knowlegde section called: <em>Titanic: Machine Learning from Disaster</em> <a href="https://www.kaggle.com/c/titanic-gettingStarted">https://www.kaggle.com/c/titanic-gettingStarted</a></p>
+
+<p>The prediciton is made using a <strong>decision tree</strong> and the <strong>rpart</strong> library</p>
+
+<p>It&#39;s easy to use:</p>
+
+<ul>
+<li>On the left panel, select the features to predict the survived variable </li>
+<li>Click on submit</li>
+<li>On the right, choose a panel to get a specific view of the results (Tree, summary, CP, confusion matrix)</li>
+<li>Change features, click on submit and see the changes</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -58,14 +65,72 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>An example</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">plot(1:10, 1:10)
+    <p>For the features:</p>
+
+<ul>
+<li>Pclass (passenger class)</li>
+<li>Sex</li>
+<li>Age</li>
+<li>Fare (price of the ticket)</li>
+</ul>
+
+<pre><code class="r">fitTree &lt;- rpart(Survived ~ Pclass + Sex + Age + Fare, data = train, method = &quot;class&quot;)
+prediction &lt;- predict(fitTree, test, type = &quot;class&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Tree and Error</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How well did you predict the end!!</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">table(test$Survived, prediction)
+</code></pre>
+
+<pre><code>##    prediction
+##       0   1
+##   0 117   9
+##   1  31  43
+</code></pre>
+
+<pre><code class="r">precision &lt;- TP/(TP + FP)
+recall &lt;- TP/(TP + FN)
+accuracy &lt;- (TP + TN)/(TP + TN + FP + FN)
+F1 &lt;- (2 * precision * recall)/(precision + recall)
+</code></pre>
+
+<pre><code>## [1] &quot;The model has a precision of 0.83 , a recall of 0.58&quot;
+</code></pre>
+
+<pre><code>## [1] &quot;an accuracy of 0.8 and an F1 score of 0.68&quot;
+</code></pre>
+
+<p><em>Your turn just have fun!!!</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -76,14 +141,32 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='My application'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='An example'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Tree and Error'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='How well did you predict the end!!'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title=''>
+         5
       </a>
     </li>
   </ul>

@@ -1,15 +1,17 @@
-testDeck
-========
+Developing data product course project
+===========
 
-This is a test deck for publishing a slidify document.
+Abstract
+--------------------
+The goal of the project is to develop a shiny application and a presentation using slidfy
 
-Fork this repo.
+The application uses the data from the Kaggle contest Titanic Disaster. 
+It allows to perform a decision tree by selecting the features in the data.
+The performance of the model are then displayed.
 
-Make an edit to this readme file on gh-pages branch. (You can do this directly on the github site by clicking on the readme file and then clicking edit)
-
-Commit the change.
-
-Go to username.github.io/testDeck/index.html
-And the presentation should be rendered
-
-
+Content of directories:
+-------------------------------
+This directory contains 3 sub directories:
+- data provides 2 csv file a train and test set obtained in: *https://www.kaggle.com/c/titanic-gettingStarted*
+- rydt containing the presentation code using slidify
+- TitanicApp with the ui.R and server.R of the application
